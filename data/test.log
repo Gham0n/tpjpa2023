@@ -1,0 +1,69 @@
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C3*/SET SCHEMA PUBLIC
+create sequence Department_SEQ start with 1 increment by 50
+create sequence Employee_SEQ start with 1 increment by 50
+create table Department (id bigint not null, name varchar(255), primary key (id))
+create table Employee (department_id bigint, id bigint not null, name varchar(255), primary key (id))
+alter table Employee add constraint FK14tijxqry9ml17nk86sqfp561 foreign key (department_id) references Department
+DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+INSERT INTO DEPARTMENT VALUES(1,'java')
+INSERT INTO EMPLOYEE VALUES(1,1,'Jakab Gipsz')
+INSERT INTO EMPLOYEE VALUES(1,2,'Captain Nemo')
+ALTER SEQUENCE PUBLIC.DEPARTMENT_SEQ RESTART WITH 51
+ALTER SEQUENCE PUBLIC.EMPLOYEE_SEQ RESTART WITH 101
+COMMIT
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C9*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C10*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C11*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C14*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C15*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C16*/SET SCHEMA PUBLIC
+create sequence Medecin_SEQ start with 1 increment by 50
+create sequence Patient_SEQ start with 1 increment by 50
+create sequence RDV_SEQ start with 1 increment by 50
+create table Medecin (id bigint not null, name varchar(255), primary key (id))
+create table Patient (id bigint not null, name varchar(255), primary key (id))
+create table RDV (date date, id bigint not null, medecin_id bigint, patient_id bigint, intitule varchar(255), primary key (id))
+alter table RDV add constraint FKsjviymt7hvm6qqbr0p1hxl0t4 foreign key (medecin_id) references Medecin
+alter table RDV add constraint FKmmmdpbyk6sikt9npb90qshynk foreign key (patient_id) references Patient
+INSERT INTO PATIENT VALUES(1,'Jakab Gipsz')
+INSERT INTO PATIENT VALUES(2,'Captain Nemo')
+INSERT INTO MEDECIN VALUES(1,'Jean Neige')
+INSERT INTO MEDECIN VALUES(2,'John Snow')
+ALTER SEQUENCE PUBLIC.PATIENT_SEQ RESTART WITH 101
+ALTER SEQUENCE PUBLIC.MEDECIN_SEQ RESTART WITH 101
+COMMIT
+DISCONNECT
+/*C17*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C18*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C19*/SET SCHEMA PUBLIC
+INSERT INTO RDV VALUES(NULL,1,1,1,'Bronchite')
+INSERT INTO RDV VALUES(NULL,2,2,2,'Mal aux dents')
+ALTER SEQUENCE PUBLIC.RDV_SEQ RESTART WITH 101
+COMMIT
+DISCONNECT
+/*C20*/SET SCHEMA PUBLIC
+DISCONNECT
