@@ -1,3 +1,11 @@
 # Template de projet pour le TP JPA 2021 UniR
 
-Bonjour le monde
+Faire un héritage avec l'intitulé:
+
+Intitulé --> Urgence
+         --> Ordonance / Démarche administrative
+         --> Consultation classique 
+
+
+Ajouter la date avec timestamp ? 
+         
