@@ -1,35 +1,36 @@
 package domain;
 
-import java.sql.Date;
-
-import jakarta.persistence.CascadeType;
+import java.sql.Timestamp;
+import domain.intitule.Intitule;
+import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
+
 @Entity
 public class RDV {
     private Long id;
 
-	private String intitule;
+	private Intitule intitule;
 
     private Patient patient;
 
     private Medecin medecin;
 
-    private Date date ;
+    private  Timestamp timestamp;
 
 	public RDV() {
 		super();
 	}
 
-	public RDV(String intitule, Patient patient, Medecin  medecin) {
+	public RDV(Intitule intitule, Patient patient, Medecin  medecin, Timestamp timestamp) {
 		this.intitule = intitule;
         this.medecin = medecin;
         this.patient = patient;
-        // this.date = date; 
+        this.timestamp = timestamp; 
 	}
 
 	@Id
@@ -42,19 +43,22 @@ public class RDV {
 		this.id = id;
 	}
 
-    public Date getDate(){
-        return date;
-    }
-
-    public void setDate(Date date){
-        this.date = date;    }
-
-	public String getintitule() {
+   	@OneToOne
+	public Intitule getintitule() {
 		return intitule;
 	}
 
-	public void setintitule(String intitule) {
+	public void setintitule(Intitule intitule) {
 		this.intitule = intitule;
+	}
+
+	@Basic
+	public Timestamp getTimestamp(){
+		return timestamp;
+	}
+
+	public void setTimestamp(Timestamp timestamp){
+		this.timestamp = timestamp;
 	}
 
 	@ManyToOne

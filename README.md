@@ -1,11 +1,10 @@
 # Template de projet pour le TP JPA 2021 UniR
 
-Faire un héritage avec l'intitulé:
-
-Intitulé --> Urgence
-         --> Ordonance / Démarche administrative
-         --> Consultation classique 
+Dans le readme, Faire les requêtes + requêtes nommées
 
 
-Ajouter la date avec timestamp ? 
+--Faire la DAO 
+
+--Repondre  injection de dependances 
          
+--Repondre problème n+1

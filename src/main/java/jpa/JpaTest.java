@@ -1,11 +1,18 @@
 package jpa;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import domain.Department;
 import domain.Medecin;
 import domain.Patient;
 import domain.RDV;
+import domain.intitule.ConsultationClassique;
+import domain.intitule.Intitule;
+import domain.intitule.Ordonnance;
+import domain.intitule.Urgence;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+
 public class JpaTest {
 	private EntityManager manager;
 	public JpaTest(EntityManager manager) {
@@ -34,23 +41,6 @@ public class JpaTest {
 		EntityManagerHelper.closeEntityManagerFactory();
 		System.out.println(".. done");
 	}
-	// private void createPatients() {
-	// 	int numOfPatients = manager.createQuery("Select a From Patient a", Patient.class).getResultList().size();
-	// 	if (numOfPatients == 0) {
-	// 		Department department = new Department("java");
-	// 		manager.persist(department);
-	// 		manager.persist(new Patient("Jakab Gipsz", department));
-	// 		manager.persist(new Patient("Captain Nemo", department));
-	// 	}
-	// }
-	// private void listPatients() {
-	// 	List<Patient> resultList = manager.createQuery("Select a From Patient a", Patient.class).getResultList();
-	// 	System.out.println("num of employess:" + resultList.size());
-	// 	for (Patient next : resultList) {
-	// 		System.out.println("next Patient: " + next);
-	// 	}
-	// }
-
 
 	private void createPatient() {
 		int numOfPatients = manager.createQuery("Select a From Patient a", Patient.class).getResultList().size();
@@ -86,16 +76,23 @@ public class JpaTest {
 		int numOfRDV = manager.createQuery("Select a From RDV a", RDV.class).getResultList().size();
 		List<Medecin> listMedecin = manager.createQuery("Select a From Medecin a", Medecin.class).getResultList();
 		List<Patient>  listPatient = manager.createQuery("Select a From Patient a", Patient.class).getResultList();
-		if (numOfRDV == 0) {	
-			manager.persist(new RDV("Bronchite", listPatient.get(0), listMedecin.get(0)));
-			manager.persist(new RDV("Mal aux dents", listPatient.get(1), listMedecin.get(1)));
+
+		manager.persist(new Urgence("Cas d'urgence"));
+        manager.persist(new Ordonnance("Prescription médicale"));
+        manager.persist(new ConsultationClassique("Rendez-vous de consultation"));
+
+		List<Intitule> listIntitules = manager.createQuery("Select a From Intitule a", Intitule.class).getResultList();
+
+		if (numOfRDV == 0) {		
+			manager.persist(new RDV(listIntitules.get(0), listPatient.get(0), listMedecin.get(0), Timestamp.valueOf("2017-11-15 15:30:14.332")));
+			manager.persist(new RDV(listIntitules.get(1), listPatient.get(1), listMedecin.get(1), Timestamp.valueOf("2023-08-09 15:30:14.332")));
 		}
 	}
 	private void listRDV() {
 		List<RDV> resultList = manager.createQuery("Select a From RDV a", RDV.class).getResultList();
 		System.out.println("num of RDVs:" + resultList.size());
 		for (RDV next : resultList) {
-			System.out.println("next RDV: " + next.getintitule() + ", Patient : " + next.getPatient().getName() + ", Medecin : " + next.getMedecin().getName());
+			System.out.println("next RDV: " + next.getintitule().getClass().getName() + ", Patient : " + next.getPatient().getName() + ", Medecin : " + next.getMedecin().getName());
 		}
 	}
 }
