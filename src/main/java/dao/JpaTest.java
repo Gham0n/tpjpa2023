@@ -21,35 +21,33 @@ public class JpaTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		EntityManager manager = EntityManagerHelper.getEntityManager();
-		JpaTest test = new JpaTest(manager);
-		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
+		// EntityManager manager = EntityManagerHelper.getEntityManager();
+		// JpaTest test = new JpaTest(manager);
+		// EntityTransaction tx = manager.getTransaction();
+		// tx.begin();
 		try {
 			//  test.createPatient();
 			// test.createMedecin();
 			// test.createRDV();
 
-			test.createPatientDAO();
+			PatientDAO Pdao = new PatientDAO();
+			Patient p = new Patient();
+			p.setName("TITI");
+			Pdao.save(p);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		tx.commit();
-		test.listPatient();
-		test.listMedecin();
-		test.listRDV();
-		manager.close();
-		EntityManagerHelper.closeEntityManagerFactory();
+		// tx.commit();
+		// test.listPatient();
+		// test.listMedecin();
+		// test.listRDV();
+		// manager.close();
+		// EntityManagerHelper.closeEntityManagerFactory();
 		System.out.println(".. done");
 	}
 
-	private void createPatientDAO(){
-			PatientDAO Pdao = new PatientDAO();
-			Patient p = new Patient("Patrick");
-			Pdao.save(p);
 
-	}
 	private void createPatient() {
 		int numOfPatients = manager.createQuery("Select a From Patient a", Patient.class).getResultList().size();
 		if (numOfPatients == 0) {	
