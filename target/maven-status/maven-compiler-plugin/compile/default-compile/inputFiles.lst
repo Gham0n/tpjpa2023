@@ -6,7 +6,9 @@ d:\dev\M2\TAA\tpjpa2023\src\main\java\dao\MedecinDAO.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\dao\IntituleDAO.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\business\Medecin.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\business\Patient.java
+d:\dev\M2\TAA\tpjpa2023\src\main\java\servlet\UserInfo.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\dao\RDVDAO.java
+d:\dev\M2\TAA\tpjpa2023\src\main\java\servlet\MyServlet.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\dao\JpaTest.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\dao\PatientDAO.java
 d:\dev\M2\TAA\tpjpa2023\src\main\java\dao\AbstractJpaDao.java
