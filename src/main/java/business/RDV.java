@@ -5,34 +5,34 @@ import java.sql.Timestamp;
 
 import business.intitule.Intitule;
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
-
 @Entity
-public class RDV implements Serializable{
-    private Long id;
+public class RDV implements Serializable {
+	private Long id;
 
 	private Intitule intitule;
 
-    private Patient patient;
+	private Patient patient;
 
-    private Medecin medecin;
+	private Medecin medecin;
 
-    private  Timestamp timestamp;
+	private Timestamp timestamp;
 
 	public RDV() {
 		super();
 	}
 
-	public RDV(Intitule intitule, Patient patient, Medecin  medecin, Timestamp timestamp) {
+	public RDV(Intitule intitule, Patient patient, Medecin medecin, Timestamp timestamp) {
 		this.intitule = intitule;
-        this.medecin = medecin;
-        this.patient = patient;
-        this.timestamp = timestamp; 
+		this.medecin = medecin;
+		this.patient = patient;
+		this.timestamp = timestamp;
 	}
 
 	@Id
@@ -45,7 +45,7 @@ public class RDV implements Serializable{
 		this.id = id;
 	}
 
-   	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	public Intitule getintitule() {
 		return intitule;
 	}
@@ -55,11 +55,11 @@ public class RDV implements Serializable{
 	}
 
 	@Basic
-	public Timestamp getTimestamp(){
+	public Timestamp getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Timestamp timestamp){
+	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
 	}
 
@@ -72,13 +72,12 @@ public class RDV implements Serializable{
 		this.patient = patient;
 	}
 
-    @ManyToOne
+	@ManyToOne
 	public Medecin getMedecin() {
 		return medecin;
 	}
 
-	public void setMedecin( Medecin medecin) {
+	public void setMedecin(Medecin medecin) {
 		this.medecin = medecin;
 	}
 }
-

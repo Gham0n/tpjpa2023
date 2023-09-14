@@ -9,18 +9,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-
-
-
-
 @Entity
-public class Medecin implements Serializable{
-    private String name;
-    
+public class Medecin implements Serializable {
+	private String name;
+
 	private Long id;
 
-
-    private List<RDV> listRdv;
+	private List<RDV> listRdv;
 
 	public Medecin() {
 	}
@@ -28,8 +23,6 @@ public class Medecin implements Serializable{
 	public Medecin(String name) {
 		this.name = name;
 	}
-
-    
 
 	@Id
 	@GeneratedValue
@@ -48,24 +41,23 @@ public class Medecin implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-    
-    // public static void addRDV(RDV rdv) {
-    //     listRdv.add(rdv);
-    // }
 
-    @OneToMany(mappedBy = "medecin", cascade = CascadeType.PERSIST)
+	// public static void addRDV(RDV rdv) {
+	// listRdv.add(rdv);
+	// }
+
+	@OneToMany(mappedBy = "medecin", cascade = CascadeType.PERSIST)
 	public List<RDV> getListRDV() {
 		return listRdv;
 	}
 
-    public void setListRDV(List<RDV> listRdv){
-        this.listRdv = listRdv;
-    }
+	public void setListRDV(List<RDV> listRdv) {
+		this.listRdv = listRdv;
+	}
 
 	@Override
 	public String toString() {
 		return "Medecin [id=" + id + ", name=" + name + "]";
 	}
-
 
 }

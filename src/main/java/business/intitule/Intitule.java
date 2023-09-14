@@ -9,21 +9,19 @@ import jakarta.persistence.Inheritance;
 
 @Entity
 @Inheritance
-public class Intitule implements Serializable{
+public class Intitule implements Serializable {
 
-   
     protected String name;
 
     private Long id;
 
-    public Intitule(){}
+    public Intitule() {
+    }
 
-
-    public Intitule(String name){
+    public Intitule(String name) {
         this.name = name;
     }
-    
-   
+
     public String getName() {
         return name;
     }
@@ -33,14 +31,13 @@ public class Intitule implements Serializable{
     }
 
     @Id
-	@GeneratedValue
-	public Long getId() {
-		return id;
-	}
+    @GeneratedValue
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    
 }

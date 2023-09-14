@@ -9,12 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Patient implements Serializable{
-    private Long id;
+public class Patient implements Serializable {
+	private Long id;
 
 	private String name;
 
-    private List<RDV> listRdv;
+	private List<RDV> listRdv;
 
 	public Patient() {
 	}
@@ -41,19 +41,19 @@ public class Patient implements Serializable{
 		this.name = name;
 	}
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.PERSIST)
 	public List<RDV> getListRDV() {
 		return listRdv;
 	}
 
-    public void setListRDV(List<RDV> listRdv){
-        this.listRdv = listRdv;
-    }
+	public void setListRDV(List<RDV> listRdv) {
+		this.listRdv = listRdv;
+	}
 
-    // public void addRDV(RDV rdv){
-    //     listRdv.add(rdv);
-    //     Medecin.addRDV(rdv);
-    // }
+	// public void addRDV(RDV rdv){
+	// listRdv.add(rdv);
+	// Medecin.addRDV(rdv);
+	// }
 
 	@Override
 	public String toString() {
