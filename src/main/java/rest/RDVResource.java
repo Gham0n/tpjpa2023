@@ -1,7 +1,10 @@
 package rest;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.mapping.Array;
 
 import business.RDVDTO;
 import business.IntituleDTO;
@@ -27,22 +30,24 @@ public class RDVResource {
 
     RDV r = Rdao.findOne(rdvId);
 
-    Long i = r.getintitule().getId();
-    Long p = r.getPatient().getId();
-    Long m = r.getMedecin().getId();
-
-    Timestamp t = r.getTimestamp();
-
-    RDVDTO dto = new RDVDTO(i, p, m, t);
-    dto.setId(r.getId());
-    return dto;
+    return rdvIntoDto(r);
   }
 
   @GET
   @Path("/")
-  public List<RDV> getRDV() {
+  public List<RDVDTO> getRDV() {
 
-    return Rdao.findAll();
+    List<RDV> listRdv = Rdao.findAll();
+
+    List<RDVDTO> listRdvdto = new ArrayList<RDVDTO>();
+
+    for (RDV r : listRdv) {
+
+      listRdvdto.add(rdvIntoDto(r));
+
+    }
+
+    return listRdvdto;
   }
 
   @POST
@@ -55,4 +60,18 @@ public class RDVResource {
 
     return Response.ok().entity("SUCCESS").build();
   }
+
+  public RDVDTO rdvIntoDto(RDV r) {
+    Long i = r.getintitule().getId();
+    Long p = r.getPatient().getId();
+    Long m = r.getMedecin().getId();
+
+    Timestamp t = r.getTimestamp();
+
+    RDVDTO dto = new RDVDTO(i, p, m, t);
+    dto.setId(r.getId());
+    return dto;
+
+  }
+
 }

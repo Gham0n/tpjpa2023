@@ -42,10 +42,6 @@ public class Medecin implements Serializable {
 		this.name = name;
 	}
 
-	// public static void addRDV(RDV rdv) {
-	// listRdv.add(rdv);
-	// }
-
 	@OneToMany(mappedBy = "medecin", cascade = CascadeType.PERSIST)
 	public List<RDV> getListRDV() {
 		return listRdv;

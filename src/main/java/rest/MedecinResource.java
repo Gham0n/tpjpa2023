@@ -1,8 +1,11 @@
 package rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import business.Medecin;
+import business.MedecinDTO;
+import business.RDV;
 import dao.MedecinDAO;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -20,15 +23,25 @@ public class MedecinResource {
 
   @GET
   @Path("/{medecinId}")
-  public Medecin getMedecinById(@PathParam("medecinId") Long medecinId) {
-    return Mdao.findOne(medecinId);
+  public MedecinDTO getMedecinById(@PathParam("medecinId") Long medecinId) {
+    Medecin m = Mdao.findOne(medecinId);
+
+    return medecinIntoDto(m);
   }
 
   @GET
   @Path("/")
-  public List<Medecin> getMedecin() {
+  public List<MedecinDTO> getMedecin() {
 
-    return Mdao.findAll();
+    List<Medecin> listMedecin = Mdao.findAll();
+    List<MedecinDTO> listMedecinDTO = new ArrayList<MedecinDTO>();
+
+    for (Medecin m : listMedecin) {
+      listMedecinDTO.add(medecinIntoDto(m));
+    }
+
+    return listMedecinDTO;
+
   }
 
   @POST
@@ -42,4 +55,22 @@ public class MedecinResource {
 
     return Response.ok().entity("SUCCESS").build();
   }
+
+  public MedecinDTO medecinIntoDto(Medecin m) {
+
+    MedecinDTO dto = new MedecinDTO(m.getName());
+    dto.setId(m.getId());
+    List<RDV> listRdv = m.getListRDV();
+    List<Long> rdvIds = new ArrayList<>();
+
+    for (RDV r : listRdv) {
+      rdvIds.add(r.getId());
+
+    }
+    dto.setListRDV(rdvIds);
+
+    return dto;
+
+  }
+
 }
