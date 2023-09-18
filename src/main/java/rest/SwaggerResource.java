@@ -3,14 +3,11 @@ package rest;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.util.logging.Logger;
 
 import jakarta.ws.rs.*;
 
 @Path("/api")
 public class SwaggerResource {
-
-    private static final Logger logger = Logger.getLogger(SwaggerResource.class.getName());
 
     @GET
     public byte[] Get1() {

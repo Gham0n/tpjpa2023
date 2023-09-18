@@ -2,7 +2,6 @@ package business;
 
 import java.io.Serializable;
 import java.util.List;
-import jakarta.persistence.Entity;
 
 public class PatientDTO implements Serializable {
 	private Long id;

@@ -2,7 +2,6 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
-import business.Patient;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 

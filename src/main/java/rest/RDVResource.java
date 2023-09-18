@@ -3,9 +3,6 @@ package rest;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.mapping.Array;
-
 import business.RDVDTO;
 import business.RDV;
 import dao.RDVDAO;
