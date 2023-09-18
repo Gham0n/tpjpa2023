@@ -1,10 +1,11 @@
 package rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.Parameter;
-
 import business.Patient;
+import business.PatientDTO;
+import business.RDV;
 import dao.PatientDAO;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -22,15 +23,27 @@ public class PatientResource {
 
   @GET
   @Path("/{patientId}")
-  public Patient getPatientById(@PathParam("patientId") Long patientId) {
-    return Pdao.findOne(patientId);
+  public PatientDTO getPatientById(@PathParam("patientId") Long patientId) {
+    
+     Patient p = Pdao.findOne(patientId);
+
+     return patientIntoDTO(p);
+     
   }
 
   @GET
   @Path("/")
-  public List<Patient> getPatient() {
+  public List<PatientDTO> getPatient() {
 
-    return Pdao.findAll();
+    List<Patient> listP = Pdao.findAll();
+
+    List<PatientDTO> listDTO = new ArrayList<PatientDTO>();
+
+
+    for (Patient p : listP){
+      listDTO.add(patientIntoDTO(p));
+    }
+    return listDTO;
   }
 
   @POST
@@ -43,5 +56,27 @@ public class PatientResource {
     Pdao.save(patient);
 
     return Response.ok().entity("SUCCESS").build();
+  }
+
+  public PatientDTO patientIntoDTO( Patient p){
+
+    String name = p.getName();
+    PatientDTO dto = new PatientDTO(name);
+    
+    Long i = p.getId();
+    List<RDV> listRdv =  p.getListRDV();
+    List<Long> rdvId =  new ArrayList<>();
+
+
+    for (RDV rdv : listRdv){
+
+      rdvId.add(rdv.getId());
+
+    }
+     dto.setListRDVid(rdvId);
+     dto.setId(i);
+     dto.getListRDVid();
+    
+    return dto ;
   }
 }

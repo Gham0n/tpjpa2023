@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.mapping.Array;
 
 import business.RDVDTO;
-import business.IntituleDTO;
 import business.RDV;
 import dao.RDVDAO;
 import jakarta.ws.rs.Consumes;
