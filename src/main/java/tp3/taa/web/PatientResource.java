@@ -40,7 +40,6 @@ public class PatientResource {
   public List<PatientDTO> getPatient() {
 
     List<Patient> listP = Pdao.findAll();
-
     List<PatientDTO> listDTO = new ArrayList<PatientDTO>();
 
     for (Patient p : listP) {
@@ -54,9 +53,13 @@ public class PatientResource {
   public String addPatient(@RequestBody MedecinDTO med) {
     String patientId = "";
     try {
+
       Patient p = new Patient(med.getName());
+
       Pdao.save(p);
+
       patientId = String.valueOf(p.getId());
+
     } catch (Exception ex) {
       return "Error creating the user: " + ex.toString();
     }
