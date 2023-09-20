@@ -1,18 +1,13 @@
-/*C1*/SET SCHEMA SYSTEM_LOBS
-INSERT INTO BLOCKS VALUES(0,2147483647,0)
-COMMIT
-/*C3*/SET SCHEMA PUBLIC
-create sequence Intitule_SEQ start with 1 increment by 50
-create sequence Medecin_SEQ start with 1 increment by 50
-create sequence Patient_SEQ start with 1 increment by 50
-create sequence RDV_SEQ start with 1 increment by 50
-create table Intitule (id bigint not null, DTYPE varchar(31) not null, name varchar(255), primary key (id))
-create table Medecin (id bigint not null, name varchar(255), primary key (id))
-create table Patient (id bigint not null, name varchar(255), primary key (id))
-create table RDV (id bigint not null, intitule_id bigint unique, medecin_id bigint, patient_id bigint, timestamp timestamp(6), primary key (id))
-alter table RDV add constraint FKar63pes4vhm7i0cxsq61u3drs foreign key (intitule_id) references Intitule
-alter table RDV add constraint FKsjviymt7hvm6qqbr0p1hxl0t4 foreign key (medecin_id) references Medecin
-alter table RDV add constraint FKmmmdpbyk6sikt9npb90qshynk foreign key (patient_id) references Patient
-DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
-DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+create table intitule (dtype varchar(31) not null, id bigint not null, name varchar(255), primary key (id))
+create table medecin (id bigint not null, name varchar(255), primary key (id))
+create table patient (id bigint not null, name varchar(255), primary key (id))
+create table rdv (id bigint not null, timestamp timestamp(6), intitule_id bigint, medecin_id bigint, patient_id bigint, primary key (id))
+alter table rdv add constraint UK_kcw3bf2sib89jb7jl2sj2mloq unique (intitule_id)
+create sequence intitule_seq start with 1 increment by 50
+create sequence medecin_seq start with 1 increment by 50
+create sequence patient_seq start with 1 increment by 50
+create sequence rdv_seq start with 1 increment by 50
+alter table rdv add constraint FKrt9bt1lyjy7m3y982lumydqhc foreign key (intitule_id) references intitule
+alter table rdv add constraint FKdgct0jpj903rvesuauqqils7a foreign key (medecin_id) references medecin
+alter table rdv add constraint FK8t4hcbp21ag6r0o8tk1qsrjtg foreign key (patient_id) references patient

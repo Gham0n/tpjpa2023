@@ -1,7 +1,11 @@
 package dao;
 import business.RDV;
 
-public class RDVDAO extends AbstractJpaDao<Long, RDV> {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+
+public class RDVDAO extends JpaRepository<RDV, Long> {
     
     public RDVDAO(){
         super(RDV.class);
