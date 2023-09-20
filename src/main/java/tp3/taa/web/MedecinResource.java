@@ -5,30 +5,31 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import tp3.taa.business.Medecin;
 import tp3.taa.business.MedecinDTO;
 import tp3.taa.business.RDV;
-import tp3.taa.dao.MedecinDAO;
+import  tp3.taa.dao.MedecinDAO;
 
-@Controller
+@RestController
+@RequestMapping("/medecin")
 public class MedecinResource {
 
   @Autowired
   MedecinDAO Mdao;
 
-  @RequestMapping("/medecin")
   @ResponseBody
-
-  public MedecinDTO getMedecinById(Long medecinId) {
+  @GetMapping("/{medecinId}")
+  public MedecinDTO getMedecinById(@PathVariable("medecinId") Long medecinId) {
     Medecin m = Mdao.getReferenceById(medecinId);
 
     return medecinIntoDto(m);
   }
-
-
 
   @RequestMapping("/")
   @ResponseBody
@@ -52,9 +53,6 @@ public class MedecinResource {
 
     return "User succesfully created with id = " + medecin.getId();
   }
-
-  
-
 
   public MedecinDTO medecinIntoDto(Medecin m) {
 
