@@ -1,10 +1,8 @@
-package dao;
-import business.Patient;
+package tp3.taa.dao;
 
-public class PatientDAO extends AbstractJpaDao<Long, Patient> {
-    
-    public PatientDAO(){
-        super(Patient.class);
-    }
+import org.springframework.data.jpa.repository.JpaRepository;
+import tp3.taa.business.Patient;
+
+public interface PatientDAO extends JpaRepository<Patient, Long> {
 
 }

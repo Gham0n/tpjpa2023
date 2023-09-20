@@ -1,10 +1,11 @@
-package dao;
-import business.Medecin;
+package tp3.taa.dao;
 
-public class MedecinDAO extends AbstractJpaDao<Long, Medecin> {
-    
-    public MedecinDAO(){
-        super(Medecin.class);
-    }
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import tp3.taa.business.Medecin;
+
+public interface MedecinDAO extends JpaRepository<Medecin, Long> {
+
+    // AJouter ses propres fonctiond perso
 
 }

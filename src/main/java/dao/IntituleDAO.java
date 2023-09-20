@@ -1,11 +1,11 @@
-package dao;
+package tp3.taa.dao;
 
-import business.intitule.Intitule;
+import tp3.taa.business.intitule.Intitule;
 
-public class IntituleDAO  extends AbstractJpaDao<Long, Intitule>{
+public class IntituleDAO extends JpaRepository<Intitule, Long> {
 
-    public IntituleDAO(){
+    public IntituleDAO() {
         super(Intitule.class);
     }
-    
+
 }

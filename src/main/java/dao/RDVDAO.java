@@ -1,14 +1,8 @@
-package dao;
-import business.RDV;
+package tp3.taa.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
+import tp3.taa.business.RDV;
 
-
-public class RDVDAO extends JpaRepository<RDV, Long> {
-    
-    public RDVDAO(){
-        super(RDV.class);
-    }
+public interface RDVDAO extends JpaRepository<RDV, Long> {
 
 }

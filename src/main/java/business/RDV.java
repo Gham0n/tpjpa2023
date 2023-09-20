@@ -1,9 +1,8 @@
-package business;
+package tp3.taa.business;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import business.intitule.Intitule;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -11,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import tp3.taa.business.intitule.Intitule;
 
 @Entity
 public class RDV implements Serializable {

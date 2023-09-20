@@ -1,4 +1,4 @@
-package business.intitule;
+package tp3.taa.business.intitule;
 
 import java.io.Serializable;
 

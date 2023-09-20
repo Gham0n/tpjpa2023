@@ -1,4 +1,4 @@
-package business;
+package tp3.taa.business;
 
 import java.io.Serializable;
 import java.util.List;
