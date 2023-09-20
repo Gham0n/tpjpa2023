@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,11 +49,12 @@ public class RDVResource {
 
   @RequestMapping("/addrdv")
   @ResponseBody
-  public String addRDV(RDV rdv) {
+  public String addRDV(
+      RDV rdv) {
 
     Rdao.save(rdv);
 
-    return "Rdv succesfully created with id = " + medecin.getId();
+    return "Rendez-vous succesfully created with id = " + rdv.getId();
   }
 
   public RDVDTO rdvIntoDto(RDV r) {
