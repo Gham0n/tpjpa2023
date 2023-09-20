@@ -51,10 +51,10 @@ public class PatientResource {
 
   @PostMapping("/addPatient")
   @ResponseBody
-  public String addPatient(@RequestBody MedecinDTO med) {
+  public String addPatient(@RequestBody PatientDTO patient ) {
     String patientId = "";
     try {
-      Patient p = new Patient(med.getName());
+      Patient p = new Patient(patient.getName());
       Pdao.save(p);
       patientId = String.valueOf(p.getId());
     } catch (Exception ex) {
