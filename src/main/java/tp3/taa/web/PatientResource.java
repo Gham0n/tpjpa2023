@@ -63,7 +63,7 @@ public class PatientResource {
     }
    
 
-    return "User succesfully created with id = " + patientId;
+    return "Patient succesfully created with id = " + patientId;
   }
 
   @GetMapping("/delete/{patientId}")
