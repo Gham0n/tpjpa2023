@@ -51,36 +51,34 @@ public class PatientResource {
 
   @PostMapping("/addPatient")
   @ResponseBody
-  public String addPatient(@RequestBody MedecinDTO med ) {
+  public String addPatient(@RequestBody MedecinDTO med) {
     String patientId = "";
     try {
       Patient p = new Patient(med.getName());
       Pdao.save(p);
       patientId = String.valueOf(p.getId());
-    }
-    catch (Exception ex) {
+    } catch (Exception ex) {
       return "Error creating the user: " + ex.toString();
     }
-   
 
     return "Patient succesfully created with id = " + patientId;
   }
 
   @GetMapping("/delete/{patientId}")
-	@ResponseBody
-	public String deletePatientById(@PathVariable("patientId") Long patientId) {
+  @ResponseBody
+  public String deletePatientById(@PathVariable("patientId") Long patientId) {
     String name = Pdao.getReferenceById(patientId).getName();
-		try {
+    try {
 
-			Pdao.deleteById(patientId);
+      Pdao.deleteById(patientId);
 
-		} catch (Exception ex) {
+    } catch (Exception ex) {
 
-			return "Error deleting the user:" + ex.toString();
+      return "Error deleting the user:" + ex.toString();
 
-		}
-		return "Patient" + name + "succesfully deleted!";
-	}
+    }
+    return "Patient" + name + "succesfully deleted!";
+  }
 
   public PatientDTO patientIntoDTO(Patient p) {
 

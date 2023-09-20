@@ -38,7 +38,6 @@ public class MedecinResource {
   public List<MedecinDTO> getmedecin() {
 
     List<Medecin> listP = Mdao.findAll();
-
     List<MedecinDTO> listDTO = new ArrayList<MedecinDTO>();
 
     for (Medecin p : listP) {
