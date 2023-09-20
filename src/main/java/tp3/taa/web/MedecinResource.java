@@ -6,14 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tp3.taa.business.Medecin;
 import tp3.taa.business.MedecinDTO;
+import tp3.taa.business.Medecin;
 import tp3.taa.business.RDV;
-import  tp3.taa.dao.MedecinDAO;
+import tp3.taa.dao.MedecinDAO;
 
 @RestController
 @RequestMapping("/medecin")
@@ -44,13 +47,35 @@ public class MedecinResource {
     return listDTO;
   }
 
-  @RequestMapping("/addMedecin")
+  @PostMapping("/addMedecin")
   @ResponseBody
-  public String addmedecin(Medecin medecin) {
+  public String addMedecin(@RequestBody MedecinDTO med) {
+    String MedecinId = "";
+    try {
+      Medecin p = new Medecin(med.getName());
+      Mdao.save(p);
+      MedecinId = String.valueOf(p.getId());
+    } catch (Exception ex) {
+      return "Error creating the user: " + ex.toString();
+    }
 
-    Mdao.save(medecin);
+    return "Medecin succesfully created with id = " + MedecinId;
+  }
 
-    return "medecin succesfully created with id = " + medecin.getId();
+  @GetMapping("/delete/{medecinId}")
+  @ResponseBody
+  public String deleteMedecinById(@PathVariable("medecinId") Long medecinId) {
+    String name = Mdao.getReferenceById(medecinId).getName();
+    try {
+
+      Mdao.deleteById(medecinId);
+
+    } catch (Exception ex) {
+
+      return "Error deleting the user:" + ex.toString();
+
+    }
+    return "Medecin " + name + " succesfully deleted!";
   }
 
   public MedecinDTO medecinIntoDto(Medecin m) {

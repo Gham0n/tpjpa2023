@@ -49,8 +49,7 @@ public class RDVResource {
 
   @RequestMapping("/addrdv")
   @ResponseBody
-  public String addRDV(
-      RDV rdv) {
+  public String addRDV(RDV rdv) {
 
     Rdao.save(rdv);
 
