@@ -51,7 +51,7 @@ public class MedecinResource {
 
     Mdao.save(medecin);
 
-    return "User succesfully created with id = " + medecin.getId();
+    return "medecin succesfully created with id = " + medecin.getId();
   }
 
   public MedecinDTO medecinIntoDto(Medecin m) {

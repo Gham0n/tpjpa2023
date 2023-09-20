@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -18,15 +20,16 @@ import tp3.taa.business.PatientDTO;
 import tp3.taa.business.RDV;
 import tp3.taa.dao.PatientDAO;
 
-@Controller
+@RestController
+@RequestMapping("/patient")
 public class PatientResource {
 
   @Autowired
   PatientDAO Pdao;
 
-  @RequestMapping("/medecin")
+  @RequestMapping("/{patientId}")
   @ResponseBody
-  public PatientDTO getPatientById(Long patientId) { // @PathParam("patientId")
+  public PatientDTO getPatientById(@PathVariable("patientId") Long patientId) {
 
     Patient p = Pdao.getReferenceById(patientId);
 
@@ -48,7 +51,7 @@ public class PatientResource {
     return listDTO;
   }
 
-  @RequestMapping("/addMedecin")
+  @RequestMapping("/addPatient")
   @ResponseBody
   public String addPatient(Patient patient) {
 
@@ -56,8 +59,6 @@ public class PatientResource {
 
     return "User succesfully created with id = " + patient.getId();
   }
-
-  
 
   public PatientDTO patientIntoDTO(Patient p) {
 
@@ -79,6 +80,5 @@ public class PatientResource {
 
     return dto;
   }
-
 
 }
