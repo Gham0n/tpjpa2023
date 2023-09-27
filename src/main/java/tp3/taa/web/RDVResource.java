@@ -3,8 +3,10 @@ package tp3.taa.web;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -90,6 +92,22 @@ public class RDVResource {
     return "RDV succesfully created with id = " + rdvidString;
   }
 
+  @RequestMapping("/delete/{rdvId}")
+  @ResponseBody
+  public String deleteRdvById(@PathVariable("rdvID") Long rdvId) {
+    String name = Rdao.getReferenceById(rdvId).getId().toString();
+    try {
+
+      Rdao.deleteById(rdvId);
+
+    } catch (Exception ex) {
+
+      return "Error deleting the RDV:" + ex.toString();
+
+    }
+    return "RDV" + name + "succesfully deleted!";
+  }
+
   public RDVDTO rdvIntoDto(RDV r) {
     Long i = r.getintitule().getId();
     Long p = r.getPatient().getId();
@@ -113,9 +131,9 @@ public class RDVResource {
       Intitule o = new Ordonnance("Certificat medical");
       Intitule c = new ConsultationClassique("Mal à la gorge");
 
-      // Idao.save(u);
-      // Idao.save(o);
-      Idao.save(c);
+      Idao.save(u);
+      Idao.save(o);
+      //Idao.save(c);
 
     } catch (
 

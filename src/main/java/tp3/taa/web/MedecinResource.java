@@ -61,13 +61,14 @@ public class MedecinResource {
     return "Medecin succesfully created with id = " + MedecinId;
   }
 
-  @GetMapping("/delete/{medecinId}")
+  @RequestMapping("/delete/{medecinId}")
   @ResponseBody
   public String deleteMedecinById(@PathVariable("medecinId") Long medecinId) {
     String name = Mdao.getReferenceById(medecinId).getName();
     try {
-
+      
       Mdao.deleteById(medecinId);
+ 
 
     } catch (Exception ex) {
 
