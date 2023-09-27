@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import tp3.taa.business.intitule.Intitule;
 
@@ -45,7 +46,7 @@ public class RDV implements Serializable {
 		this.id = id;
 	}
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	public Intitule getintitule() {
 		return intitule;
 	}

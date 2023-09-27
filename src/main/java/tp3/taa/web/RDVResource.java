@@ -80,10 +80,8 @@ public class RDVResource {
       rdv.setintitule(i);
       rdv.setTimestamp(t);
 
-      rdvidString = String.valueOf(rdv.getId());
-      
-
       Rdao.save(rdv);
+      rdvidString = String.valueOf(rdv.getId());
 
     } catch (Exception ex) {
       return "Error creating the user: " + ex.toString();
@@ -115,9 +113,9 @@ public class RDVResource {
       Intitule o = new Ordonnance("Certificat medical");
       Intitule c = new ConsultationClassique("Mal à la gorge");
 
-      Idao.save(u);
+      // Idao.save(u);
       // Idao.save(o);
-      // Idao.save(c);
+      Idao.save(c);
 
     } catch (
 
