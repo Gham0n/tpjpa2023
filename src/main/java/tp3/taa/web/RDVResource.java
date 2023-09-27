@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,10 +63,10 @@ public class RDVResource {
     return listRdvdto;
   }
 
-  @RequestMapping("/addrdv")
+  @PostMapping("/addrdv")
   @ResponseBody
   public String addRDV(@RequestBody RDVDTO rdto) {
-    String rdvIntitule = "";
+    String rdvidString = "";
     try {
 
       Patient p = Pdao.getReferenceById(rdto.getPatientId());
@@ -74,17 +75,19 @@ public class RDVResource {
       Timestamp t = rdto.getTimestamp();
 
       RDV rdv = new RDV();
-      rdv.setintitule(i);
-      rdv.setMedecin(m);
       rdv.setPatient(p);
+      rdv.setMedecin(m);
+      rdv.setintitule(i);
       rdv.setTimestamp(t);
 
       Rdao.save(rdv);
+      rdvidString = String.valueOf(rdv.getId());
+
     } catch (Exception ex) {
       return "Error creating the user: " + ex.toString();
     }
 
-    return "RDV succesfully created with id = " + "";
+    return "RDV succesfully created with id = " + rdvidString;
   }
 
   public RDVDTO rdvIntoDto(RDV r) {
@@ -98,6 +101,29 @@ public class RDVResource {
     dto.setId(r.getId());
     return dto;
 
+  }
+
+  @PostMapping("/intitule")
+  @ResponseBody
+  public String addInt() {
+
+    try {
+
+      Intitule u = new Urgence("J'ai mal");
+      Intitule o = new Ordonnance("Certificat medical");
+      Intitule c = new ConsultationClassique("Mal à la gorge");
+
+      // Idao.save(u);
+      // Idao.save(o);
+      Idao.save(c);
+
+    } catch (
+
+    Exception ex) {
+      return "Error creating the intitule: " + ex.toString();
+    }
+
+    return "Intitule created successfully";
   }
 
 }
