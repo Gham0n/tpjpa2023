@@ -94,7 +94,7 @@ public class RDVResource {
 
   @RequestMapping("/delete/{rdvId}")
   @ResponseBody
-  public String deleteRdvById(@PathVariable("rdvID") Long rdvId) {
+  public String deleteRdvById(@PathVariable("rdvId") Long rdvId) {
     String name = Rdao.getReferenceById(rdvId).getId().toString();
     try {
 
