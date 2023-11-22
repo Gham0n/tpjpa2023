@@ -3,10 +3,8 @@ package tp3.taa.web;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -127,13 +125,13 @@ public class RDVResource {
 
     try {
 
-      Intitule u = new Urgence("J'ai mal");
-      Intitule o = new Ordonnance("Certificat medical");
-      Intitule c = new ConsultationClassique("Mal à la gorge");
+      Intitule urg = new Urgence("J'ai mal");
+      Intitule ord = new Ordonnance("Certificat medical");
+      Intitule consult = new ConsultationClassique("Mal à la gorge");
 
-      Idao.save(u);
-      Idao.save(o);
-      //Idao.save(c);
+      Idao.save(urg);
+      Idao.save(ord);
+      Idao.save(consult);
 
     } catch (
 
