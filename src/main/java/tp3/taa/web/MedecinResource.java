@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tp3.taa.business.Medecin;
 import tp3.taa.business.MedecinDTO;
-import tp3.taa.business.Medecin;
 import tp3.taa.business.RDV;
 import tp3.taa.dao.MedecinDAO;
 
