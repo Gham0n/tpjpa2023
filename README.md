@@ -110,7 +110,7 @@ Pour creer un intitulé:
 http://localhost:8080/rdv/intitule
 ```
 
-![AddIntitule](Images/create_Intitule.png "AddIntitule")
+![AddIntitule](Images/Create_Intitule.png "AddIntitule")
 
 Pour creer un rdv:
 
@@ -138,7 +138,7 @@ Pour supprimer un medecin:
 http://localhost:8080/medecin/delete/52
 ```
 
-![DeleteMedecin](Images/deleteMedecin_Patient.png "DeleteMedecin")
+![DeleteMedecin](Images/deleteMedecin_patient.png "DeleteMedecin")
 
 Marche de la même manière pour supprimer un patient
 
