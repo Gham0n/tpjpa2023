@@ -110,7 +110,7 @@ Pour creer un intitulé:
 http://localhost:8080/rdv/intitule
 ```
 
-![AddIntitule](Images/Create_Intitule.png "AddIntitule")
+![AddIntitule](Images/Create_intitule.png "AddIntitule")
 
 Pour creer un rdv:
 
