@@ -1,8 +1,8 @@
 package tp3.taa.business.intitule;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import jakarta.persistence.Entity;
 
-@EntityScan
+@Entity
 public class ConsultationClassique extends Intitule {
 
     public ConsultationClassique() {
@@ -10,6 +10,7 @@ public class ConsultationClassique extends Intitule {
 
     public ConsultationClassique(String nom) {
         super();
+        super.setName(nom);
     }
 
 }
