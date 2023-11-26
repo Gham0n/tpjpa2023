@@ -70,8 +70,6 @@ http://localhost:8080/rdv/
 
 ![GetAllRdv](Images/getAllRdv.png "GetAllRdv")
 
-Marche de la même manière pour les intitulés.
-
 ---
 
 Pour recuperer un medecin par un id:
@@ -82,11 +80,11 @@ http://localhost:8080/medecin/1
 
 ![GetAllMedecin](Images/getMedecin1.png "GetAllMedecin")
 
-Marche de la même manière pour les patients, les intitulés et les rendez-vous.
+Marche de la même manière pour les patients et les rendez-vous.
 
 ## [POST]
 
-Les requêtes http GET seront pour l'ajout, la modification et la suppression des données:
+Les requêtes http POST seront pour l'ajout, la modification et la suppression des données:
 
 Pour creer un medecin:
 
@@ -154,7 +152,7 @@ http://localhost:8080/rdv/delete/52
 
 ---
 
-Nous avons organisé notre projet sur un git. Notre git est organisé selon la manière suivante:
+Nous avons organisé notre projet sur un git selon la manière suivante:
 
 - TP1_branch : Correspond au TP1
 - TP2_branch : Correspond au TP2
@@ -209,7 +207,7 @@ Nous avons réussi à configurer le domaine, à creer les utilisateurs, cependan
 
 Notre code compile correctement et se lance mais nous avons un soucis, nous arrivons correctement à acceder a l'indexmain, mais lorsque nous voulons aller dans la page reserver aux users ou aux admins, nos pages ne sont pas disponibles.
 
-Nous avons rencontrés des problèmes de configuration sachant que nous étions sous Windows.(Sous Linux avec docker, cela aura été plus simple.)
+Nous avons rencontrés des problèmes de configuration sachant que nous étions sous Windows.(Sous Linux avec docker, cela aurait été plus simple.)
 
 - [x] Configurer le domaine
 - [x] Creer les utilisateurs
